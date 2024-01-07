@@ -1,0 +1,46 @@
+React Native is an open-source framework for building mobile applications using JavaScript and React. Developed by Facebook, React Native allows developers to use the same codebase to create applications for both iOS and Android platforms. It's a popular choice for mobile app development because it enables developers to write code once and run it on multiple platforms, reducing the time and effort required to maintain separate codebases.
+
+Here are some key features and concepts associated with React Native:
+
+    1. React-like Components: React Native uses a component-based architecture similar to React for building user interfaces. Components are reusable and encapsulate the logic and UI elements of an application.
+
+    2. Cross-Platform Development: React Native enables cross-platform development, allowing developers to use a single codebase to create applications for both iOS and Android. This is achieved through the use of native components and modules.
+
+    3. Native Performance: While React Native allows for code sharing, it also provides the flexibility to use native modules and components when necessary. This allows developers to achieve native-like performance and access device-specific features.
+
+    4. Hot Reloading: React Native supports hot reloading, which allows developers to see the results of code changes in real-time without restarting the entire application. This can significantly speed up the development process.
+
+    5. Community and Ecosystem: React Native has a large and active community of developers. There is a vast ecosystem of third-party libraries, tools, and plugins available, making it easier for developers to integrate various functionalities into their applications.
+
+    6. Integration with Native Modules: React Native provides a bridge that allows developers to integrate native modules written in Java, Objective-C, or Swift into their JavaScript code. This is useful for accessing platform-specific features that may not be available through the React Native core.
+
+    7. Expo: Expo is a set of tools and services that complements React Native development. It provides a simplified development workflow, a variety of pre-built components, and an easy way to test and deploy React Native applications without the need for native development environments.
+
+    8. Community and Support: React Native benefits from a strong community and ongoing support from Facebook and other contributors. This ensures that the framework is continually improving and staying up-to-date with the latest developments in mobile app development.
+
+React Native is an open-source framework for building mobile applications using JavaScript and React. It is related to React.js, a JavaScript library for building user interfaces primarily used in web development. React.js is platform-agnostic (runs on any combination of operating system and underlying processor architecture) and relies on an additional library, React DOM, for web support. In contrast, React Native serves as an alternative to React DOM, specifically targeting mobile platforms like iOS and Android.
+
+React Native provides a collection of special React components that, when used in JSX code, are compiled into native UI elements for iOS and Android. It also exposes native platform APIs, allowing developers to access device-specific features, such as the device camera, in their JavaScript code. Similar to React DOM, React Native manages state, builds virtual component trees, and takes care of the compilation step to produce native mobile apps.
+
+To work with React Native, developers must be familiar with React.js, as they will write their code in React.js and utilize React Native components and APIs to create mobile applications for iOS and Android. The framework streamlines the development process by enabling code sharing between platforms and leveraging the React ecosystem.
+
+Overall, React Native has become a popular choice for developers looking to build mobile applications efficiently while maintaining a high level of performance and a native user experience.
+
+----------------------------------------
+
+Under the Hood
+
+The JSX code components are compiled into the React Native app and not the JavaScript logic. React Native maps (and compiles) re-usable components to respective platform equivalents. 
+
+<div> in Web - android.View in Android - UIView in iOS - <View> in React Native JSX
+<input> in Web - EditText in Android - UITextField in iOS - <TextInput> in React Native JSX
+
+What about the JavaScript logic? Unlike the UI elements, logic is not compiled but is running on a JavaScript thread hosted by React Native in the native app. React Native spins up a simple JavaScript process as a part of the native app and it allows us to talk to underlying native Android or iOS platform.
+
+----------------------------------------
+
+Creating React Native Projects: Expo CLI (Expo) vs React Native CLI
+
+Expo is a free third-party service provides free tools gives managed app development workflow which makes creating projects easier. Writing native apps with React Native is more convenient than with just the React Native CLI and without Expo. Less friction is there. We can switch to React Native CLI from Expo CLI any time. It is a default selection to start with Expo CLI. 
+
+React Native CLI existed before Expo CLI and is the tool provided by the React Native team and the community around React Native. It gives us a bare-bone React Native setup. We need to do more configuration and setup on our own. There are less convenience features and tapping into certain native device features such as the camera or other features, then it is often a bit more work without Expo. React Native CLI does easier integration with the native source code.

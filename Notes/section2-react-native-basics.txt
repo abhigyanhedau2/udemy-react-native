@@ -1,0 +1,51 @@
+Using React Native Components and Building UIs
+
+We build app UI and custom components by combining the core components such as <View>, <Text>, <Button>, <TextInput>, <Image>. 
+
+App() is the root component that is rendered in the app. Expo will automatically take this App() component and render as the root component. Any other UI component goes into this component as a child component. 
+
+<View> - The most fundamental component for building a UI, View is a container that supports layout with flexbox, style, some touch handling, and accessibility controls. View maps directly to the native view equivalent on whatever platform React Native is running on, whether that is a UIView, <div>, android.view, etc.
+
+<Text> - A React component for displaying text. Text supports nesting, styling, and touch handling.
+
+<Button> - A basic button component that should render nicely on any platform. Supports a minimal level of customization.
+
+---------------------------------------------------
+
+Styling React Native Apps
+
+There is no CSS. We can write the styles using inline styles using props or with the help of StyleSheet object exported from 'react-native'. We write the styles in javascript as objects that is based on CSS syntax but only a subset of properties and features are supported.
+
+
+Layouts are typically created with Flexbox is very similar to browser CSS flexbox. These styles help positioning elements inside of the containers. Positioning is controlled via style settings applied the element container.
+
+flex: 1 - The element (container) should expand to occupy available space.
+flexDirection - controls the orientations of "Main Axis" and "Cross Axis", i.e., if the "Main Axis" is "top to bottom" if "flexDirection: column" or "left to right" if "flexDirection: row"
+
+<Button> does not have a style prop to add styling to it.
+
+---------------------------------------------------
+
+Adding Interactivity and Managing State
+
+<Modal> - The Modal component is a basic way to present content above an enclosing view.
+
+<Modal visible={props.visible} animationType='slide'>
+    {props.children}
+</Modal>
+
+visible prop expects a boolean value that decides whether the modal is open or close.
+
+<Image> - A React component for displaying different types of images, including network images, static resources, temporary local images, and images from local disk, such as the camera roll.
+
+---------------------------------------------------
+
+<ScrollView> vs <FlatList> - which one to use?
+
+ScrollView renders all its react child components at once, but this has a performance downside.
+
+Imagine you have a very long list of items you want to display, maybe several screens worth of content. Creating JS components and native views for everything all at once, much of which may not even be shown, will contribute to slow rendering and increased memory usage.
+
+This is where FlatList comes into play. FlatList renders items lazily, when they are about to appear, and removes items that scroll way off screen to save memory and processing time.
+
+FlatList is also handy if you want to render separators between your items, multiple columns, infinite scroll loading, or any number of other features it supports out of the box.
