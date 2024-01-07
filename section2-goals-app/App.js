@@ -28,6 +28,7 @@ export default function App() {
 
     return (
         <View style={styles.appContainer}>
+            {/* Button to add new goal */}
             <Button title='Add New Goal' color="#339af0" onPress={startAddGoalHandler} />
             {/* Input area for goals */}
             <GoalInput onAddGoal={addGoalHandler} visible={modalIsVisible} onClose={endAddGoalHandler} />
