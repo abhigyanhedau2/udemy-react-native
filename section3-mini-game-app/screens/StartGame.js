@@ -3,7 +3,14 @@ import PrimaryButton from "../components/Buttons/PrimaryButton";
 
 export default function StartGame() {
     return <View style={styles.inputContainer}>
-        <TextInput style={styles.numberInput} maxLength={2} />
+        <TextInput
+            style={styles.numberInput}
+            maxLength={2}
+            keyboardType="number-pad"
+        // Following props can also be used
+        // autoCapitalize="none"
+        // autoComplete={false}
+        />
         <PrimaryButton>Reset</PrimaryButton>
         <PrimaryButton>Confirm</PrimaryButton>
     </View>
