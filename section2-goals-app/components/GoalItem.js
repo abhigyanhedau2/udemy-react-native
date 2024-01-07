@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         borderWidth: 1,
         borderColor: "#74c0fc",
-        backgroundColor: "#e7f5ff",
+        backgroundColor: "#fff",
         margin: 8,
         padding: 8,
         // borderRadius applied to <Text> renders in Android but not in iOS

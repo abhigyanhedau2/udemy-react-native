@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import GoalInput from './components/GoalInput';
 import GoalsList from './components/GoalsList';
 
@@ -27,14 +28,17 @@ export default function App() {
     }
 
     return (
-        <View style={styles.appContainer}>
-            {/* Button to add new goal */}
-            <Button title='Add New Goal' color="#339af0" onPress={startAddGoalHandler} />
-            {/* Input area for goals */}
-            <GoalInput onAddGoal={addGoalHandler} visible={modalIsVisible} onClose={endAddGoalHandler} />
-            {/* List of goals */}
-            <GoalsList goalsList={goalsList} onDeleteItem={deleteGoalHandler} />
-        </View>
+        <>
+            <StatusBar style='dark' />
+            <View style={styles.appContainer}>
+                {/* Button to add new goal */}
+                <Button title='Add New Goal' color="#339af0" onPress={startAddGoalHandler} />
+                {/* Input area for goals */}
+                <GoalInput onAddGoal={addGoalHandler} visible={modalIsVisible} onClose={endAddGoalHandler} />
+                {/* List of goals */}
+                <GoalsList goalsList={goalsList} onDeleteItem={deleteGoalHandler} />
+            </View>
+        </>
     );
 }
 
