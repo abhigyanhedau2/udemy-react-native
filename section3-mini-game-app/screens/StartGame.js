@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         marginTop: 100,
         marginHorizontal: 24,
         padding: 16,
-        backgroundColor: "#50042a",
+        backgroundColor: "#39031e",
         borderRadius: 8,
         elevation: 4, // elevation is android-only property
         // shadow properties are iOS-only properties
