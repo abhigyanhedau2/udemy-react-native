@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import { View, TextInput, StyleSheet, Alert } from "react-native";
+import { View, TextInput, Text, StyleSheet, Alert, StatusBar as MainStatusBar } from "react-native";
 
-import PrimaryButton from "../components/Buttons/PrimaryButton";
+import Title from '../components/UI/Title';
+import PrimaryButton from "../components/UI/PrimaryButton";
 import COLORS from '../constants/colors';
+import Card from '../components/UI/Card';
+import InstructionText from '../components/Game/InstructionText';
 
 export default function StartGame(props) {
     const [enteredNumber, setEnteredNumber] = useState('');
@@ -30,50 +33,47 @@ export default function StartGame(props) {
         props.onNumberPick(chosenNumber);
     }
 
-    return <View style={styles.inputContainer}>
-        <View style={styles.textInputWrapper}>
-            <TextInput
-                style={styles.numberInput}
-                maxLength={2}
-                keyboardType="number-pad"
-                value={enteredNumber}
-                onChangeText={numberInputHandler}
-            // Following props can also be used, although not needed here
-            // autoCapitalize="none"
-            // autoComplete={false}
-            />
-        </View>
-        <View style={styles.buttonsWrapper}>
-            <View style={styles.buttonWrapper}>
-                <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+    return <View style={styles.appContainer}>
+        <Title>Guess My Number</Title>
+        <Card>
+            <View style={styles.textInputWrapper}>
+                <InstructionText>Enter a Number</InstructionText>
+                <TextInput
+                    style={styles.numberInput}
+                    maxLength={2}
+                    keyboardType="number-pad"
+                    value={enteredNumber}
+                    onChangeText={numberInputHandler}
+                // Following props can also be used, although not needed here
+                // autoCapitalize="none"
+                // autoComplete={false}
+                />
             </View>
-            <View style={styles.buttonWrapper}>
-                <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+            <View style={styles.buttonsWrapper}>
+                <View style={styles.buttonWrapper}>
+                    <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+                </View>
+                <View style={styles.buttonWrapper}>
+                    <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+                </View>
             </View>
-        </View>
+        </Card>
     </View>
 }
 
 const styles = StyleSheet.create({
-    inputContainer: {
-        marginTop: 100,
-        marginHorizontal: 24,
-        padding: 16,
-        backgroundColor: COLORS.primary800,
-        borderRadius: 8,
-        elevation: 4, // elevation is android-only property
-        // shadow properties are iOS-only properties
-        shadowColor: "black",
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 6,
-        shadowOpacity: 0.25
+    appContainer: {
+        flex: 1,
+        marginTop: MainStatusBar.currentHeight,
+        paddingHorizontal: 24
     },
     textInputWrapper: {
         alignItems: "center",
     },
     buttonsWrapper: {
         flexDirection: "row",
-        justifyContent: "space-evenly"
+        justifyContent: "space-evenly",
+        marginTop: 12
     },
     buttonWrapper: {
         flex: 1
