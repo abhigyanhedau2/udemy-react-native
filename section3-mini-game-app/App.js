@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import StartGame from './screens/StartGame';
 import Game from './screens/Game';
 import { StatusBar } from 'expo-status-bar';
+import COLORS from './constants/colors';
 
 export default function App() {
     const [userNumber, setUserNumber] = useState(null);
@@ -14,7 +15,7 @@ export default function App() {
     }
 
     return <LinearGradient
-        colors={["#72063c", "#ddb52f"]}
+        colors={[COLORS.primary500, COLORS.secondary500]}
         style={styles.appContainer}
     >
         <ImageBackground
