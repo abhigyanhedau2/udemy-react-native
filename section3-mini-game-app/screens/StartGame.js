@@ -7,7 +7,7 @@ export default function StartGame() {
             style={styles.numberInput}
             maxLength={2}
             keyboardType="number-pad"
-        // Following props can also be used
+        // Following props can also be used, although not needed here
         // autoCapitalize="none"
         // autoComplete={false}
         />
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         marginTop: 100,
         marginHorizontal: 24,
         padding: 16,
-        backgroundColor: "#72063c",
+        backgroundColor: "#50042a",
         borderRadius: 8,
         elevation: 4, // elevation is android-only property
         // shadow properties are iOS-only properties
