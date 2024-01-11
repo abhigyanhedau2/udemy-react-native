@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, ImageBackground, StatusBar as MainStatusBar, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from "expo-font";
@@ -48,7 +48,14 @@ export default function App() {
                 onGameOver={setGameIsOver}
                 onNextRound={incrementRound}
             />}
-            {gameIsOver && <GameOver rounds={rounds} />}
+            {gameIsOver &&
+                <GameOver
+                    rounds={rounds}
+                    number={userNumber}
+                    setUserNumber={setUserNumber}
+                    setGameIsOver={setGameIsOver}
+                    setRounds={setRounds}
+                />}
         </ImageBackground>
     </LinearGradient>
 }

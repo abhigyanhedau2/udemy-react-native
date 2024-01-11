@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View, Text, StyleSheet, StatusBar as MainStatusBar, Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -14,6 +14,11 @@ let UPPER_BOUND = 99;
 export default function Game(props) {
     // upper bound is excluded due to Math.random() exludes upper boundary 1
     const [computersGuess, setComputersGuess] = useState(50);
+
+    useEffect(() => {
+        LOWER_BOUND = 1;
+        UPPER_BOUND = 99;
+    }, []);
 
     function resetGameHandler() {
         props.setUserNumber(null);
@@ -68,7 +73,7 @@ export default function Game(props) {
                 </View>
                 <View style={styles.buttonContainer}>
                     {/* <PrimaryButton onPress={nextGuessHandler.bind(null, "higher")}>Higher</PrimaryButton> */}
-                    <PrimaryButton onPress={nextGuessHandler.bind(null, "lower")}>
+                    <PrimaryButton onPress={nextGuessHandler.bind(null, "higher")}>
                         <Ionicons name="md-add" size={24} color="white" />
                     </PrimaryButton>
                 </View>
