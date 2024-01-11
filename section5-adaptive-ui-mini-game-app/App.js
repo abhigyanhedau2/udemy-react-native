@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { StyleSheet, ImageBackground, StatusBar as MainStatusBar, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
+import { StatusBar } from 'expo-status-bar';
 
 import StartGame from './screens/StartGame';
 import Game from './screens/Game';
 import GameOver from "./screens/GameOver";
-import { StatusBar } from 'expo-status-bar';
 import COLORS from './constants/colors';
 
 export default function App() {
@@ -40,7 +40,7 @@ export default function App() {
             resizeMode='cover'
             imageStyle={styles.imageBackground}
         >
-            <StatusBar style='inverted' />
+            <StatusBar style='light' />
             {!userNumber && <StartGame onNumberPick={pickedNumberHandler} />}
             {userNumber && !gameIsOver && <Game
                 number={userNumber}
