@@ -47,6 +47,7 @@ export default function App() {
                 setUserNumber={setUserNumber}
                 onGameOver={setGameIsOver}
                 onNextRound={incrementRound}
+                setRounds={setRounds}
             />}
             {gameIsOver &&
                 <GameOver
