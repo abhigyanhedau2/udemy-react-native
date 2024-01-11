@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { View, Text, StyleSheet, StatusBar as MainStatusBar, Alert } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 import Title from "../components/UI/Title";
 import NumberContainer from "../components/Game/NumberContainer";
@@ -57,13 +58,19 @@ export default function Game(props) {
             <InstructionText>Higher or Lower?</InstructionText>
             <View style={styles.buttonsContainer}>
                 <View style={styles.buttonContainer}>
-                    <PrimaryButton onPress={nextGuessHandler.bind(null, "lower")}>Lower</PrimaryButton>
+                    {/* <PrimaryButton onPress={nextGuessHandler.bind(null, "lower")}>Lower</PrimaryButton> */}
+                    <PrimaryButton onPress={nextGuessHandler.bind(null, "lower")}>
+                        <Ionicons name="md-remove" size={24} color="white" />
+                    </PrimaryButton>
                 </View>
                 <View style={styles.buttonContainer}>
                     <PrimaryButton onPress={gameOverHandler}>Yes!</PrimaryButton>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <PrimaryButton onPress={nextGuessHandler.bind(null, "higher")}>Higher</PrimaryButton>
+                    {/* <PrimaryButton onPress={nextGuessHandler.bind(null, "higher")}>Higher</PrimaryButton> */}
+                    <PrimaryButton onPress={nextGuessHandler.bind(null, "lower")}>
+                        <Ionicons name="md-add" size={24} color="white" />
+                    </PrimaryButton>
                 </View>
             </View>
         </Card>

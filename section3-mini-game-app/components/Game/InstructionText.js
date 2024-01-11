@@ -6,6 +6,7 @@ export default function InstructionText(props) {
 
 const styles = StyleSheet.create({
     instructionText: {
+        fontFamily: "open-sans",
         fontSize: 24,
         color: COLORS.secondary500,
         textAlign: "center"
