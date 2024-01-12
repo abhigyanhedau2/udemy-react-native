@@ -33,6 +33,7 @@ export default function MealsOverview(props) {
         const mealItem = itemData.item;
 
         const mealItemProps = {
+            id: mealItem.id,
             title: mealItem.title,
             affordability: mealItem.affordability,
             complexity: mealItem.complexity,
