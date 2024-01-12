@@ -1,6 +1,11 @@
-import { View, StyleSheet, Pressable, Text, Platform } from "react-native"
+import { View, StyleSheet, Pressable, Text, Platform } from "react-native";
+// import { useNavigation } from "@react-navigation/native";
 
 export default function CategoryGridTile(props) {
+    // can use this hook in case we need to use the navigation object inside of a component 
+    // that is not registered as a screen inside the Navigation Container
+    // const navigation = useNavigation();
+
     return <View style={styles.gridItem}>
         <Pressable
             style={({ pressed }) => [
