@@ -8,6 +8,7 @@ export default function CategoryGridTile(props) {
 
     return <View style={styles.gridItem}>
         <Pressable
+            android_ripple={{ color: "#ccc" }}
             style={({ pressed }) => [
                 styles.flex1,
                 pressed ? styles.pressablePressed : null

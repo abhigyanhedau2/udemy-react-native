@@ -17,9 +17,23 @@ export default function MealsOverview(props) {
     const displayedMeals = MEALS.filter((mealItem) => mealItem.categoryIds.indexOf(categoryId) >= 0);
 
     function renderMealItem(itemData) {
-        return <MealItem
-            title={itemData.item.title}
-        />
+        const mealItem = itemData.item;
+
+        const mealItemProps = {
+            title: mealItem.title,
+            affordability: mealItem.affordability,
+            complexity: mealItem.complexity,
+            imageUrl: mealItem.imageUrl,
+            duration: mealItem.duration,
+            ingredients: mealItem.ingredients,
+            steps: mealItem.steps,
+            isGlutenFree: mealItem.isGlutenFree,
+            isVegan: mealItem.isVegan,
+            isVegetarian: mealItem.isVegetarian,
+            isLactoseFree: mealItem.isLactoseFree
+        }
+
+        return <MealItem {...mealItemProps} />
     }
 
     return <View style={styles.container}>
