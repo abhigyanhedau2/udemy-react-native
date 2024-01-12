@@ -1,9 +1,8 @@
-import { StyleSheet, View, FlatList } from "react-native";
 // import { useRoute } from "@react-navigation/native";
 
 import { MEALS, CATEGORIES } from "../data/dummy-data";
-import MealItem from "../components/MealItem";
 import { useLayoutEffect } from "react";
+import MealsList from "../components/MealsList/MealsList";
 
 export default function MealsOverview(props) {
     // we get a route prop for every screen registered in the NavigationContainer for nvaigation
@@ -29,39 +28,5 @@ export default function MealsOverview(props) {
         });
     }, [categoryId, navigation]);
 
-    function renderMealItem(itemData) {
-        const mealItem = itemData.item;
-
-        const mealItemProps = {
-            id: mealItem.id,
-            title: mealItem.title,
-            affordability: mealItem.affordability,
-            complexity: mealItem.complexity,
-            imageUrl: mealItem.imageUrl,
-            duration: mealItem.duration,
-            ingredients: mealItem.ingredients,
-            steps: mealItem.steps,
-            isGlutenFree: mealItem.isGlutenFree,
-            isVegan: mealItem.isVegan,
-            isVegetarian: mealItem.isVegetarian,
-            isLactoseFree: mealItem.isLactoseFree
-        }
-
-        return <MealItem {...mealItemProps} />
-    }
-
-    return <View style={styles.container}>
-        <FlatList
-            data={displayedMeals}
-            renderItem={renderMealItem}
-            keyExtractor={(item) => item.id}
-        />
-    </View>
+    return <MealsList data={displayedMeals} />;
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 16
-    }
-});
