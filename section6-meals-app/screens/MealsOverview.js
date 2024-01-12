@@ -1,8 +1,9 @@
 import { StyleSheet, View, FlatList } from "react-native";
 // import { useRoute } from "@react-navigation/native";
 
-import { MEALS } from "../data/dummy-data";
+import { MEALS, CATEGORIES } from "../data/dummy-data";
 import MealItem from "../components/MealItem";
+import { useLayoutEffect } from "react";
 
 export default function MealsOverview(props) {
     // we get a route prop for every screen registered in the NavigationContainer for nvaigation
@@ -15,6 +16,18 @@ export default function MealsOverview(props) {
 
     // Get all the meals belonging to the category with categoryId
     const displayedMeals = MEALS.filter((mealItem) => mealItem.categoryIds.indexOf(categoryId) >= 0);
+
+    const { navigation } = props;
+
+    // useEffect exectues the function it has after the componenet is done loading
+    // useLayoutEffect executes the function is has while the animation is running, while the component function execution
+    useLayoutEffect(() => {
+        const categoryTitle = CATEGORIES.find(category => category.id === categoryId).title;
+
+        navigation.setOptions({
+            title: categoryTitle
+        });
+    }, [categoryId, navigation]);
 
     function renderMealItem(itemData) {
         const mealItem = itemData.item;

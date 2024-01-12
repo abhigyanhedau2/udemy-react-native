@@ -18,8 +18,21 @@ export default function App() {
                 contentStyle: { backgroundColor: "#3f2f25" }
             }}>
                 {/* name = name to refer to that component, component = component pointer */}
-                <Stack.Screen name="MealsCategories" component={Categories} options={{ title: "All Categories" }} />
-                <Stack.Screen name="MealsOverview" component={MealsOverview} options={{}} />
+                <Stack.Screen
+                    name="MealsCategories"
+                    component={Categories}
+                    options={{ title: "All Categories" }}
+                />
+                <Stack.Screen
+                    name="MealsOverview"
+                    component={MealsOverview}
+                // options={({ route }) => {
+                //     const categoryId = route.params.categoryId;
+                //     return {
+                //         title: categoryId
+                //     }
+                // }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     </>;
