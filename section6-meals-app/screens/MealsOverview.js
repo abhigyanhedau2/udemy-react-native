@@ -1,7 +1,8 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 // import { useRoute } from "@react-navigation/native";
 
 import { MEALS } from "../data/dummy-data";
+import MealItem from "../components/MealItem";
 
 export default function MealsOverview(props) {
     // we get a route prop for every screen registered in the NavigationContainer for nvaigation
@@ -12,8 +13,21 @@ export default function MealsOverview(props) {
     // Alternatively, we could also use the useRoute hook to get hold of the route object
     // const route = useRoute();
 
+    // Get all the meals belonging to the category with categoryId
+    const displayedMeals = MEALS.filter((mealItem) => mealItem.categoryIds.indexOf(categoryId) >= 0);
+
+    function renderMealItem(itemData) {
+        return <MealItem
+            title={itemData.item.title}
+        />
+    }
+
     return <View style={styles.container}>
-        <Text>Meals Overview Screen - {categoryId}</Text>
+        <FlatList
+            data={displayedMeals}
+            renderItem={renderMealItem}
+            keyExtractor={(item) => item.id}
+        />
     </View>
 }
 
