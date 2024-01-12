@@ -4,7 +4,8 @@ import CategoryGridTile from "../components/CategoryGridTile";
 
 function renderCategoryItem({ item, navigation }) {
     function pressHandler() {
-        navigation.navigate("MealsOverview");
+        // we get this navigation object for every screen registered in the NavigationContainer for nvaigation
+        navigation.navigate("MealsOverview", { categoryId: item.id });
     }
 
     return <CategoryGridTile
