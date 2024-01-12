@@ -7,6 +7,7 @@ export default function CategoryGridTile(props) {
                 styles.flex1,
                 pressed ? styles.pressablePressed : null
             ]}
+            onPress={props.onPress}
         >
             <View style={[styles.innerContainer, { backgroundColor: props.color }]}>
                 <Text style={styles.title}>{props.title}</Text>
