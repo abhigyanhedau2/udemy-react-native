@@ -8,19 +8,26 @@ import { Ionicons } from "@expo/vector-icons"
 import ManageExpense from './screens/ManageExpense'
 import RecentExpenses from './screens/RecentExpenses'
 import AllExpenses from './screens/AllExpenses'
+import IconButton from './components/UI/IconButton'
 
-import { GlobalStyles } from "./constants/styles";
+import { GlobalStyles } from "./constants/styles"
 
-const Stack = createNativeStackNavigator()
-const BottomTabs = createBottomTabNavigator()
+const Stack = createNativeStackNavigator();
+const BottomTabs = createBottomTabNavigator();
 
 function BottomTabsNavigator() {
-    return <BottomTabs.Navigator screenOptions={{
+    return <BottomTabs.Navigator screenOptions={(props) => ({
         headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
         headerTintColor: "#fff",
         tabBarStyle: { backgroundColor: GlobalStyles.colors.primary500 },
-        tabBarActiveTintColor: GlobalStyles.colors.accent500
-    }}>
+        tabBarActiveTintColor: GlobalStyles.colors.accent500,
+        headerRight: ({ tintColor }) => <IconButton
+            name="add"
+            size={24}
+            color={tintColor}
+            onPress={() => props.navigation.navigate("ManageExpense")}
+        />
+    })}>
         <BottomTabs.Screen
             name="RecentExpenses"
             component={RecentExpenses}
