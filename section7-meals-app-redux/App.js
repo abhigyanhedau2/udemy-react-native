@@ -5,6 +5,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Ionicons } from "@expo/vector-icons";
+import { Provider } from 'react-redux';
+import { store } from "./store/redux/store";
 
 import Categories from './screens/Categories';
 import Favorites from './screens/Favorites';
@@ -46,39 +48,41 @@ function DrawerNavigator() {
 export default function App() {
     return <>
         <StatusBar style='light' />
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={{
-                headerStyle: { backgroundColor: "#351401" },
-                headerTintColor: "#fff",
-                contentStyle: { backgroundColor: "#3f2f25" } // for StackNavigator
-                // sceneContainerStyle: { backgroundColor: "#3f2f25" } // for DrawerNavigator
-            }}>
-                {/* name = name to refer to that component, component = component pointer */}
-                <Stack.Screen
-                    name="Drawer"
-                    component={DrawerNavigator}
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                    name="MealsOverview"
-                    component={MealsOverview}
-                // options={({ route }) => {
-                //     const categoryId = route.params.categoryId;
-                //     return {
-                //         title: categoryId
-                //     }
-                // }}
-                />
-                <Stack.Screen
-                    name="MealDetail"
-                    component={MealDetail}
-                    options={{
-                        title: "About the Meal"
-                        // headerRight: () => <Button title="Tap Me!" />
-                    }}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <Provider store={store}>
+            <NavigationContainer>
+                <Stack.Navigator screenOptions={{
+                    headerStyle: { backgroundColor: "#351401" },
+                    headerTintColor: "#fff",
+                    contentStyle: { backgroundColor: "#3f2f25" } // for StackNavigator
+                    // sceneContainerStyle: { backgroundColor: "#3f2f25" } // for DrawerNavigator
+                }}>
+                    {/* name = name to refer to that component, component = component pointer */}
+                    <Stack.Screen
+                        name="Drawer"
+                        component={DrawerNavigator}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="MealsOverview"
+                        component={MealsOverview}
+                    // options={({ route }) => {
+                    //     const categoryId = route.params.categoryId;
+                    //     return {
+                    //         title: categoryId
+                    //     }
+                    // }}
+                    />
+                    <Stack.Screen
+                        name="MealDetail"
+                        component={MealDetail}
+                        options={{
+                            title: "About the Meal"
+                            // headerRight: () => <Button title="Tap Me!" />
+                        }}
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </Provider>
     </>;
 }
 

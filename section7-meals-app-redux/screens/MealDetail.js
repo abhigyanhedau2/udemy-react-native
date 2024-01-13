@@ -1,6 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
 import { useLayoutEffect } from "react";
 import { View, Text, StyleSheet, Image, ScrollView, Button } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+
+import { addFavorite, removeFavorite } from "../store/redux/favorites";
 
 import { MEALS } from "../data/dummy-data";
 import MealDetails from "../components/MealDetails";
@@ -9,25 +12,30 @@ import List from "../components/MealDetail/List";
 import IconButton from "../components/IconButton";
 
 export default function MealDetail(props) {
-    const mealId = props.route.params.mealId;
+    const favoriteMealIds = useSelector((state) => state.favoriteMeals.ids);
+    const dispatch = useDispatch()
 
+    const mealId = props.route.params.mealId;
     const selectedMeal = MEALS.find(meal => meal.id === mealId);
 
     const navigation = useNavigation();
 
-    function headerButtonPressHandler() {
+    const mealIsFavorite = favoriteMealIds.includes(mealId);
 
+    function changeFavoriteStatusHandler() {
+        if (mealIsFavorite) dispatch(removeFavorite({ id: mealId }));
+        else dispatch(addFavorite({ id: mealId }));
     }
 
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => <IconButton
-                icon="heart"
+                icon={mealIsFavorite ? "heart" : "heart-outline"}
                 color="#fff"
-                onPress={headerButtonPressHandler}
+                onPress={changeFavoriteStatusHandler}
             />
         });
-    }, [navigation, headerButtonPressHandler]);
+    }, [navigation, changeFavoriteStatusHandler]);
 
     return <ScrollView style={styles.container}>
         {/* When using a network image, i.e., image from the web, you need to set the width and the height explicitly using styles */}
