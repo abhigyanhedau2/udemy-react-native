@@ -9,7 +9,7 @@ export default function ExpenseItem(props) {
     const navigation = useNavigation();
 
     function expensePressHandler() {
-        navigation.navigate("ManageExpense");
+        navigation.navigate("ManageExpense", { mode: "edit", id: props.id });
     }
 
     return <Pressable onPress={expensePressHandler} style={({ pressed }) => pressed && styles.pressed}>

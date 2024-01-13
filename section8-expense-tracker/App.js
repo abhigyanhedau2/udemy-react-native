@@ -25,7 +25,7 @@ function BottomTabsNavigator() {
             name="add"
             size={24}
             color={tintColor}
-            onPress={() => props.navigation.navigate("ManageExpense")}
+            onPress={() => props.navigation.navigate("ManageExpense", { mode: "add" })}
         />
     })}>
         <BottomTabs.Screen
@@ -53,11 +53,14 @@ export default function App() {
     return <>
         <StatusBar style="light" />
         <NavigationContainer>
-            <Stack.Navigator>
+            <Stack.Navigator screenOptions={{
+                headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+                headerTintColor: "#fff"
+            }}>
                 {/* Following is the bottom tabs navigator that will switch between RecentExpenses and AllExpenses screen */}
                 <Stack.Screen name="ExpensesOverview" component={BottomTabsNavigator} options={{ headerShown: false }} />
                 {/* Following is the modal screen - ManageExpense - that will pop up when we need to add/edit expense */}
-                <Stack.Screen name="ManageExpense" component={ManageExpense} />
+                <Stack.Screen name="ManageExpense" component={ManageExpense} options={{ presentation: "modal" }} />
             </Stack.Navigator>
         </NavigationContainer>
     </>
