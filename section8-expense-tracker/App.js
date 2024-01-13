@@ -11,6 +11,7 @@ import AllExpenses from './screens/AllExpenses'
 import IconButton from './components/UI/IconButton'
 
 import { GlobalStyles } from "./constants/styles"
+import ExpensesContextProvider from './store/expenses-context'
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -52,17 +53,19 @@ function BottomTabsNavigator() {
 export default function App() {
     return <>
         <StatusBar style="light" />
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={{
-                headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
-                headerTintColor: "#fff"
-            }}>
-                {/* Following is the bottom tabs navigator that will switch between RecentExpenses and AllExpenses screen */}
-                <Stack.Screen name="ExpensesOverview" component={BottomTabsNavigator} options={{ headerShown: false }} />
-                {/* Following is the modal screen - ManageExpense - that will pop up when we need to add/edit expense */}
-                <Stack.Screen name="ManageExpense" component={ManageExpense} options={{ presentation: "modal" }} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <ExpensesContextProvider>
+            <NavigationContainer>
+                <Stack.Navigator screenOptions={{
+                    headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+                    headerTintColor: "#fff"
+                }}>
+                    {/* Following is the bottom tabs navigator that will switch between RecentExpenses and AllExpenses screen */}
+                    <Stack.Screen name="ExpensesOverview" component={BottomTabsNavigator} options={{ headerShown: false }} />
+                    {/* Following is the modal screen - ManageExpense - that will pop up when we need to add/edit expense */}
+                    <Stack.Screen name="ManageExpense" component={ManageExpense} options={{ presentation: "modal" }} />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </ExpensesContextProvider>
     </>
 }
 
