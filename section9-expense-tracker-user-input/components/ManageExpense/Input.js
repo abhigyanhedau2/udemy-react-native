@@ -8,8 +8,10 @@ export default function Input(props) {
         props.textInputConfig && props.textInputConfig.multiline && styles.inputMultiline
     ];
 
+    if (props.invalid) inputStyles.push(styles.invalidInput);
+
     return <View style={[styles.container, props.style]}>
-        <Text style={styles.label}>{props.label}</Text>
+        <Text style={[styles.label, props.invalid && styles.invalidLabel]}>{props.label}</Text>
         <TextInput style={inputStyles} {...props.textInputConfig} />
     </View>
 }
@@ -34,5 +36,11 @@ const styles = StyleSheet.create({
     inputMultiline: {
         minHeight: 100,
         textAlignVertical: "top"
-    }
+    },
+    invalidLabel: {
+        color: GlobalStyles.colors.error500
+    },
+    invalidInput: {
+        backgroundColor: GlobalStyles.colors.error50
+    },
 });
