@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Colors } from "../../constants/colors";
 import OutlinedButton from "../UI/OutlinedButton";
 
-export default function ImagePicker() {
+export default function ImagePicker(props) {
     const [pickedImage, setPickedImage] = useState(null);
 
     // For iOS - Check or request permissions to access the camera. This uses both requestCameraPermissionsAsync 
@@ -38,6 +38,7 @@ export default function ImagePicker() {
         });
 
         setPickedImage(image.assets[0].uri);
+        props.onTakeImage(image.assets[0].uri);
     }
 
     let imagePreview = <Text>No image taken yet.</Text>;

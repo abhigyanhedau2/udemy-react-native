@@ -3,7 +3,7 @@ import OutlinedButton from "../UI/OutlinedButton";
 import { Colors } from "../../constants/colors";
 import { getCurrentPositionAsync, useForegroundPermissions, PermissionStatus } from "expo-location";
 
-export default function LocationPicker() {
+export default function LocationPicker(props) {
     const [locationPermissionInformation, requestPermission] = useForegroundPermissions();
 
     async function verifyPermissions() {
@@ -27,7 +27,7 @@ export default function LocationPicker() {
         if (!hasPermission) return;
 
         const location = await getCurrentPositionAsync();
-        console.log(location);
+        props.onPickLocation(location);
     }
 
     function pickOnMapHandler() { }
